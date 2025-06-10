@@ -3,6 +3,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import router from './routes'
 import PrimeVue from 'primevue/config';
+import './assets/tailwind.css'
 import Aura from '@primeuix/themes/aura';
 
 
