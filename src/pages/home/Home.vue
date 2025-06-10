@@ -20,7 +20,9 @@
  </div>
 
  <div>
-  <center><span v-if="player?.isHost">HOST</span></center>
+  <div class="bg-red-500 flex justify-center">
+    <span v-if="player?.isHost">HOST</span>
+  </div>
    <InputGroup>
     <InputText v-model="newNick" placeholder="novo nick"/>
     <Button @click="updateNick" label="atualizar nick"/>
@@ -79,27 +81,27 @@ interface Player {
 }
 
 onMounted(() => {
-  // socket.on('message', (data) => {
-  //   // messages.value.push(data);
+  socket.on('message', (data) => {
+    // messages.value.push(data);
 
-  //   const blob = new Blob([data], { type: 'image/png' });
+    const blob = new Blob([data], { type: 'image/png' });
 
-  //   const img = new Image();
-  //   img.src = URL.createObjectURL(blob);
-  //   img.alt = 'Imagem recebida';
-  //   img.className = 'imagem-recebida'; // Você pode estilizar com CSS
+    const img = new Image();
+    img.src = URL.createObjectURL(blob);
+    img.alt = 'Imagem recebida';
+    img.className = 'imagem-recebida'; // Você pode estilizar com CSS
 
-  //   // Insere no DOM, por exemplo em um container
-  //   const container = document.getElementById('image-container');
-  //   if (container) {
-  //     container.appendChild(img);
-  //   }
+    // Insere no DOM, por exemplo em um container
+    const container = document.getElementById('image-container');
+    if (container) {
+      container.appendChild(img);
+    }
 
-  //   // Libera memória depois que a imagem carregar
-  //   img.onload = () => {
-  //     URL.revokeObjectURL(img.src);
-  //   };
-  // });
+    // Libera memória depois que a imagem carregar
+    img.onload = () => {
+      URL.revokeObjectURL(img.src);
+    };
+  });
 
   socket.emit('join', uuid.value)
 
