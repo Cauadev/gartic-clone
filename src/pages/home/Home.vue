@@ -20,7 +20,9 @@
  </div>
 
  <div>
-  <center><span v-if="player?.isHost">HOST</span></center>
+  <div class="bg-red-500 flex justify-center">
+    <span v-if="player?.isHost">HOST</span>
+  </div>
    <InputGroup>
     <InputText v-model="newNick" placeholder="novo nick"/>
     <Button @click="updateNick" label="atualizar nick"/>

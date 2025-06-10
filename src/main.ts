@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import router from './routes'
 import PrimeVue from 'primevue/config';
 import Aura from '@primeuix/themes/aura';
+import './style.css'
 
 
 const pinia = createPinia()
