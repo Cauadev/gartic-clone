@@ -1,4 +1,6 @@
 <template>
+  <div class="bg-[#2B2B2B] w-full h-12 flex justify-center items-center font-medium text-white text-lg gap-3 fixed"> <i class="pi pi-discord text-[#5662F6] !text-2xl"></i> <span>Beta aberta! Entre no nosso discord</span></div>
+  <div v-confetti="{ particleCount: 350, force: 0.5, duration: 5000, destroyAfterDone: true, stageWidth: 4000, stageHeight: 1000 }" />
   <div 
     :style="{backgroundImage: `url(${wallpaper})`}" 
     class="w-screen h-screen bg-cover bg-center flex items-center"
@@ -15,7 +17,7 @@
         <Button @click="updateNick" class=" hover:!bg-purple-400 ml-3 !bg-purple-600 !border-purple-600" label="Atualizar" />
       </div>
       <div class="mb-16">
-        <Button :pt="{label: 'text-[26px]'}" class="h-24 w-96 hover:!bg-purple-400 ml-3 !bg-purple-600 !border-purple-600" label="Começar" />
+        <Button :pt="{label: 'text-[26px]'}" class="animate-bounce h-24 w-96 hover:!bg-purple-400 ml-3 !bg-purple-600 !border-purple-600" label="Começar" />
       </div>
     </div>
 
@@ -25,11 +27,12 @@
 <script setup lang='ts'>
 
   import wallpaper from '../../assets/imgs/WallpaperGarticClone.jpg'
+  import { vConfetti } from '@neoconfetti/vue';
   import { onMounted, ref } from 'vue';
   import Button from "primevue/button"
   import InputText from "primevue/inputtext"
   import socket from '../../service/socket';
-  import { ColorPicker, InputGroup, Slider, Textarea } from 'primevue';
+  import { ColorPicker, InputGroup, Message, Slider, Textarea } from 'primevue';
 
   const message = ref<string>("");
   const messages = ref<string[]>([])

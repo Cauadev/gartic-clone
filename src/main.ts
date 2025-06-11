@@ -5,7 +5,7 @@ import router from './routes'
 import PrimeVue from 'primevue/config';
 import Lara from '@primeuix/themes/lara';
 import './style.css'
-
+import 'primeicons/primeicons.css'
 
 const pinia = createPinia()
 const app = createApp(App)

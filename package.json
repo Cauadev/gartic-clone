@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@neoconfetti/vue": "^2.2.1",
     "@primeuix/themes": "^1.1.1",
     "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/vite": "^4.1.8",
     "@vueuse/core": "^13.3.0",
     "pinia": "^3.0.3",
+    "primeicons": "^7.0.0",
     "primevue": "^4.3.5",
     "socket.io-client": "^4.8.1",
     "vue": "^3.5.13",
