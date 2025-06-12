@@ -46,7 +46,6 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
 
   socket.on('join', (uuid) => {
-    console.log("joined")
     if(!hostId) hostId = socket.id
 
     players.push({
@@ -72,26 +71,22 @@ io.on('connection', (socket) => {
     }
   })
 
-  // socket.on('message', (message) => {
-  //   console.log(hostId)
-  //   console.log('Message received:', message);
-  //   io.emit('message', message); // Broadcast para todos
-  // });
+  socket.on('message', (message) => {
+    console.log(hostId)
+    console.log('Message received:', message);
+    io.emit('message', message); // Broadcast para todos
+  });
 
   socket.on('disconnect', () => {
-
-    console.log("disconnected")
-
     //remove player
     const index = players.findIndex(p => p.id === socket.id);
     if (index !== -1) players.splice(index, 1);
 
-
     //se o host sair seta outro como host
-    if(socket.id === hostId && players.length > 0){
+    if(socket.id == hostId && players.length > 0){
       hostId = players[0].id
       players[0].isHost = true;
-    }else{
+    }else if(socket.id == hostId){
       hostId = null
     }
 
